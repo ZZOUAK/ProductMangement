@@ -20,7 +20,7 @@ class ProductsTest extends TestCase
             'description' =>$this->faker->paragraph,
             'price'=>$this->faker->randomFloat,
             'image'=>$this->faker->image('public/storage/images',400,300, null, false),
-            'category'=>$this->faker->word
+            'category'=>$this->faker->randomDigit
         ];
 
         $this->post('/products',$attributes)->assertRedirect('/');
