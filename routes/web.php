@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', 'App\Http\Controllers\CustomersController@index')->name('home');
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('home');
+Route::get('/products/create', 'App\Http\Controllers\ProductController@show')->name('formForProduct');
+Route::get('/products/{product}', 'App\Http\Controllers\ProductController@show')->name('showProduct');
 
-Route::post('/products', 'App\Http\Controllers\CustomersController@store')->name('createProduct');
+Route::post('/products/delete', 'App\Http\Controllers\ProductController@store')->name('createProduct');

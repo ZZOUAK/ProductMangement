@@ -16,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products= Product::latest()->get();
+        return view('products.index',['products'=>$products]);
     }
 
     /**
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+       return view('products.create');
     }
 
     /**
@@ -75,7 +76,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        $request->session()->flash('status', 'Enregistré avec succès !  ');
+        $request->session()->flash('status', 'Product saved !  ');
 
             return redirect(route('home'));
 
@@ -89,7 +90,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+
+        return view('products.show',['product'=>$product]);
     }
 
     /**
@@ -100,7 +102,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.create',['product'=>$product]);
     }
 
     /**
@@ -112,7 +114,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $this->store($request);
     }
 
     /**
@@ -123,6 +125,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
     }
 }
