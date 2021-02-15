@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('home');
-Route::get('/products/create', 'App\Http\Controllers\ProductController@show')->name('formForProduct');
+Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('formForProduct');
 Route::get('/products/{product}', 'App\Http\Controllers\ProductController@show')->name('showProduct');
-
-Route::post('/products/delete', 'App\Http\Controllers\ProductController@store')->name('createProduct');
+Route::post('/products/store', 'App\Http\Controllers\ProductController@store')->name('createProduct');
+Route::get('/products/{product}/edit', 'App\Http\Controllers\ProductController@edit')->name('editProduct');
+Route::post('/products/update', 'App\Http\Controllers\ProductController@update')->name('updateProduct');

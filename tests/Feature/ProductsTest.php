@@ -20,13 +20,13 @@ class ProductsTest extends TestCase
             'description' =>$this->faker->paragraph,
             'price'=>$this->faker->randomFloat,
             'image'=>$this->faker->image('public/storage/images',400,300, null, false),
-            'category'=>$this->faker->randomDigit
+            'Category'=>$this->faker->name
         ];
 
-        $this->post('/products',$attributes)->assertRedirect('/');
+        $this->post('/products/store',$attributes)->assertRedirect('/products');
 
         $this->assertDatabaseHas('products',$attributes);
-        $this->get('/')->assertSee($attributes);
+        $this->get('/products')->assertSee($attributes);
 
 
     }

@@ -7,7 +7,7 @@
 
         <div class="col-md-8" id="test">
             <div class="card">
-                <div class="card-header">Add Product @{{message}}<span class="badge badge-secondary"></span></div>
+                <div class="card-header">update Product @{{message}}<span class="badge badge-secondary"></span></div>
 
 
 
@@ -33,7 +33,7 @@
                     @endif
 
 
-                <form method="POST" action="{{ route('createProduct') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateProduct') }}">
                     @csrf
 
 
@@ -41,7 +41,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" v-model="message" type="text" class="form-control @error('name') is-invalid @enderror" name="name"   value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" v-model="message" type="text" class="form-control @error('name') is-invalid @enderror" name="name"   value="{{ $product->name }}" required autocomplete="name" autofocus>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                         <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('description') }}</label>
 
                         <div class="col-md-6">
-                            <textarea id="description"   class="form-control @error('description') is-invalid @enderror" name="description"  value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+                            <input id="description" type="text"  class="form-control @error('description') is-invalid @enderror" name="description"  value="{{ $product->description }}" required autocomplete="description" autofocus>
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                         <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('price') }}</label>
 
                         <div class="col-md-6">
-                            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price"  value="{{ old('price') }}" required autocomplete="price" autofocus>
+                            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price"  value="{{ $product->price }}" required autocomplete="price" autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -78,9 +78,17 @@
                     </div>
                     <div class="form-group row" id="lotDiv">
                         <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('image') }}</label>
-
                         <div class="col-md-6">
-                            <input id="image" type="file"  name="image"   required  autofocus>
+                            <input id="image" type="file"  class="form-control"  name="image"   required  autofocus>
+
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <input id="image" type="file"  class="form-control"  name="image"   required  autofocus>
 
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -113,7 +121,7 @@
                     <div class="form-group row mb-0" id="buttonDiv">
                         <div class="col-md-6 offset-md-6">
                             <button type="submit" :disabled="casee" class="btn btn-primary" >
-                                {{ __('Add') }}
+                                {{ __('update') }}
                             </button>
                         </div>
                     </div>
