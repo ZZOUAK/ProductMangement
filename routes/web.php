@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('home');
-Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('formForProduct');
-Route::get('/products/{product}', 'App\Http\Controllers\ProductController@show')->name('showProduct');
-Route::post('/products/store', 'App\Http\Controllers\ProductController@store')->name('createProduct');
-Route::get('/products/{product}/edit', 'App\Http\Controllers\ProductController@edit')->name('editProduct');
-Route::post('/products/update', 'App\Http\Controllers\ProductController@update')->name('updateProduct');
+Route::prefix('/products')->group(function ()
+{
+    Route::get('/', 'App\Http\Controllers\ProductController@index')->name('home');
+    Route::get('/create', 'App\Http\Controllers\ProductController@create')->name('formForProduct');
+    Route::get('/{product}', 'App\Http\Controllers\ProductController@show')->name('showProduct');
+    Route::post('/store', 'App\Http\Controllers\ProductController@store')->name('createProduct');
+    Route::get('/{product}/edit', 'App\Http\Controllers\ProductController@edit')->name('editProduct');
+    Route::put('/update', 'App\Http\Controllers\ProductController@update')->name('updateProduct');
+});
+
