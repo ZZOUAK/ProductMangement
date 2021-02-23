@@ -1842,19 +1842,30 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
-/* harmony import */ var _components_Products_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Products.vue */ "./resources/js/components/Products.vue");
-/* harmony import */ var _components_Products_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_Products_vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ProductForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ProductForm.vue */ "./resources/js/components/ProductForm.vue");
+/* harmony import */ var _components_ProductForm_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_ProductForm_vue__WEBPACK_IMPORTED_MODULE_0__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
- //import Product from './components/Product.vue';
-//import ProductForm from './components/ProductForm.vue';
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js"); //import Vue from 'vue';
+//import Product from './components/Product.vue';
 
+ //import Products from './components/Products.vue';
 
-new vue__WEBPACK_IMPORTED_MODULE_1__.default({
+new Vue({
   el: '#app',
+  data: {
+    productApp: [{
+      name: ''
+    }, {
+      desciption: ''
+    }, {
+      price: ''
+    }, {
+      category: ''
+    }]
+  },
   components: {
-    Products: (_components_Products_vue__WEBPACK_IMPORTED_MODULE_0___default())
+    ProductForm: (_components_ProductForm_vue__WEBPACK_IMPORTED_MODULE_0___default())
   }
 });
 
@@ -1873,7 +1884,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
@@ -27716,13 +27727,13 @@ if (inBrowser) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Products.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Products.vue ***!
-  \**********************************************/
+/***/ "./resources/js/components/ProductForm.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/ProductForm.vue ***!
+  \*************************************************/
 /***/ (() => {
 
-throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <template>\n|     <div class=\"Products\">\n|     <!-- <table>");
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script>\n| export default {\n|     name : 'new_product',");
 
 /***/ })
 

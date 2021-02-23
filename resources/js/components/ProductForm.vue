@@ -1,29 +1,30 @@
 <script>
+export default {
+    name : 'new_product',
+    data() {
+        return {
+             product:[
+                {name : ''},
+               {desciption : ''},
+               {price : ''},
+               {category : ''}]
 
-
-Vue.component('new_product',{
-
-    data : function() {
-          return {
-
-            product: {
-              name: '',
-              description: '',
-              price:'',
-              category:'',
-            }
-          };
-        },
-        computed: {
-          isValid() {
+        }
+    },
+    methods: {
+        isValid() {
             return this.product.name !== '' && this.product.decription !== '' && this.product.price !=='' && this.product.category!=='';
           }
-        },
-    template : `
-    <div class="new_product">
+    }
+}
+</script>
+<template>
+    <div>
+        <main class="py-4" id="app">
+    <div class="new_product">a
         <div class="col-md-8" id="test">
             <div class="card">
-                <div class="card-header">Add Product {{product.name}}<span class="badge badge-secondary"></span></div>
+                <div class="card-header">Add Product @{{ProductApp.name}}<span class="badge badge-secondary"></span></div>
 
 
 
@@ -57,7 +58,7 @@ Vue.component('new_product',{
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" v-model="product.name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"   value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" v-bind:product.name="ProductApp.name" v-model="ProductApp.name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"   value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -70,7 +71,7 @@ Vue.component('new_product',{
                         <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('description') }}</label>
 
                         <div class="col-md-6">
-                            <textarea id="description"  v-model="product.description" class="form-control @error('description') is-invalid @enderror" name="description"  value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+                            <textarea id="description"  v-bind:product.description="ProductApp.description" v-model="ProductApp.description" class="form-control @error('description') is-invalid @enderror" name="description"  value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -83,7 +84,7 @@ Vue.component('new_product',{
                         <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('price') }}</label>
 
                         <div class="col-md-6">
-                            <input id="price" type="number" v-model="product.price" class="form-control @error('price') is-invalid @enderror" name="price"  value="{{ old('price') }}" required autocomplete="price" autofocus>
+                            <input id="price" type="number" v-bind:product.price="ProductApp.price" v-model="ProductApp.price" class="form-control @error('price') is-invalid @enderror" name="price"  value="{{ old('price') }}" required autocomplete="price" autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -109,7 +110,7 @@ Vue.component('new_product',{
                         <label for="Category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                         <div class="col-md-6">
-                            <input id="Category" type="text" v-model="product.category"  class="form-control @error('Category') is-invalid @enderror" name="Category"  value="{{ old('Category') }}" required autocomplete="Category" autofocus>
+                            <input id="Category" type="text" v-bind:product.category="ProductApp.category" v-model="ProductApp.category"  class="form-control @error('Category') is-invalid @enderror" name="Category"  value="{{ old('Category') }}" required autocomplete="Category" autofocus>
 
                             @error('Category')
                                 <span class="invalid-feedback" role="alert">
@@ -152,12 +153,9 @@ Vue.component('new_product',{
             </div>
 
         </div>
+    </div></main>
     </div>
-    `,
-
-
-});
-</script>
+</template>
 
 
 
