@@ -7,7 +7,9 @@
 
         <div class="col-md-8" id="test">
             <div class="card">
-                <div class="card-header">update Product @{{message}}<span class="badge badge-secondary"></span></div>
+                <div class="card-header">
+                    <h5 class=" row justify-content-center">update Product  <span class="badge badge-secondary">{{$product->name}}</span></h5>
+                </div>
 
 
 
@@ -33,9 +35,9 @@
                     @endif
 
 
-                <form method="POST" action="{{ route('updateProduct') }}">
+                <form method="POST" action="{{ route('updateProduct',$product) }}" enctype="multipart/form-data">
                     @csrf
-
+                    @method('PUT')
 
                     <div class="form-group row" id="familleDiv">
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
@@ -78,17 +80,9 @@
                     </div>
                     <div class="form-group row" id="lotDiv">
                         <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('image') }}</label>
-                        <div class="col-md-6">
-                            <input id="image" type="file"  class="form-control"  name="image"   required  autofocus>
 
-                            @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
                         <div class="col-md-6">
-                            <input id="image" type="file"  class="form-control"  name="image"   required  autofocus>
+                            <input id="image" type="file"  name="image"   required  autofocus>
 
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -101,7 +95,7 @@
                         <label for="Category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                         <div class="col-md-6">
-                            <input id="Category" type="text"  class="form-control @error('Category') is-invalid @enderror" name="Category"  value="{{ old('Category') }}" required autocomplete="Category" autofocus>
+                            <input id="Category" type="text"  class="form-control @error('Category') is-invalid @enderror" name="Category"  value="{{ $category->name }}" required autocomplete="Category" autofocus>
 
                             @error('Category')
                                 <span class="invalid-feedback" role="alert">

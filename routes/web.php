@@ -20,10 +20,12 @@ Route::get('/', function () {
 Route::prefix('/products')->group(function ()
 {
     Route::get('/', 'App\Http\Controllers\ProductController@index')->name('home');
+    Route::post('/', 'App\Http\Controllers\ProductController@store')->name('createProduct');
     Route::get('/create', 'App\Http\Controllers\ProductController@create')->name('formForProduct');
     Route::get('/{product}', 'App\Http\Controllers\ProductController@show')->name('showProduct');
-    Route::post('/store', 'App\Http\Controllers\ProductController@store')->name('createProduct');
+
     Route::get('/{product}/edit', 'App\Http\Controllers\ProductController@edit')->name('editProduct');
-    Route::put('/update', 'App\Http\Controllers\ProductController@update')->name('updateProduct');
+    Route::put('/{product}', 'App\Http\Controllers\ProductController@update')->name('updateProduct');
+    Route::delete('/{product}','App\Http\Controllers\ProductController@destroy')->name('deleteProduct');
 });
 

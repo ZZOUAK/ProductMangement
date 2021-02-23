@@ -109,7 +109,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit',['product'=>$product]);
+
+        return view('products.edit',['product'=>$product,
+        'category'=>Category::find($product->category_id)]);
     }
 
     /**
@@ -119,9 +121,55 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request,Product $product)
     {
-        $this->store($request);
+
+
+        $validatedData=request()->validate([
+            'name' => 'required|string|unique:products,name',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'required',
+            'Category' =>'required|string|exists:categories,name',
+
+        ]);
+
+
+
+        $category=Category::where('name',strip_tags(request('Category')))->get();
+
+        $categoryId=$category[0]->id;
+
+        $product->category_id=$categoryId;
+        $product->name=strip_tags(request('name'));
+        $product->description=strip_tags(request('description'));
+        $product->price=strip_tags(request('price'));
+
+        if ($request->hasFile('image')) {
+            // Get image file
+            $image = $request->file('image');
+            // Make a image name based on user name and current timestamp
+
+            $name = Str::slug($request->input('name').'_'.time());
+            // Define folder path
+            $folder = 'images';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . '/'.$name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $product->image = $filePath;
+
+        }
+
+
+        $product->save();
+
+        $request->session()->flash('status', 'Product Updated !  ');
+
+            return redirect(route('home'));
+
     }
 
     /**
@@ -133,5 +181,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        return redirect(route('home'));
     }
 }

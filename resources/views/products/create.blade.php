@@ -4,11 +4,12 @@
 
 
 
-    <div class="new_product">
-        <div class="col-md-8" id="test">
+    <div class="container">
+        <div class="col-md-12" id="test">
             <div class="card">
-                <div class="card-header">Add Product @{{product.name}}<span class="badge badge-secondary"></span></div>
-
+                <div class="card-header">
+                <h5 class=" row justify-content-center">Add Product <span class="badge badge-secondary">  @{{product.name}}</span></h5>
+                </div>
 
 
 
@@ -67,7 +68,7 @@
                         <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('price') }}</label>
 
                         <div class="col-md-6">
-                            <input id="price" type="number" v-model="product.price" class="form-control @error('price') is-invalid @enderror" name="price"  value="{{ old('price') }}" required autocomplete="price" autofocus>
+                            <input id="price" type="number" step="0.01" v-model="product.price" class="form-control @error('price') is-invalid @enderror" name="price"  value="{{ old('price') }}" required autocomplete="price" autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
