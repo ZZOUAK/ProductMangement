@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,7 +18,7 @@
  -->
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    @stack('head')
 </head>
 <body>
     <div id="app">
@@ -32,5 +32,11 @@
     </div>
 
 
+
 </body>
+<script>
+    var old_data = {!! json_encode(old()) !!};
+ </script>
+<script src="{{ mix('js/app.js') }}"></script>
+
 </html>

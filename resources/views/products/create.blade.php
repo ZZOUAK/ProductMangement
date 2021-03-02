@@ -5,7 +5,7 @@
 
 
     <div class="container">
-        <div class="col-md-12" id="test">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                 <h5 class=" row justify-content-center">Add Product <span class="badge badge-secondary">  @{{product.name}}</span></h5>
@@ -113,7 +113,7 @@
 
                     <div class="form-group row mb-0" id="buttonDiv">
                         <div class="col-md-6 offset-md-6">
-                            <button type="submit" :disabled="casee" class="btn btn-primary" >
+                            <button type="submit" :disabled="isValid ? false : true" class="btn btn-primary" >
                                 {{ __('Add') }}
                             </button>
                         </div>
@@ -129,7 +129,4 @@
     </div>
 
 
-{{-- <new_product
-
-    v-bind:product="productApp"></new_product> --}}
 @endsection

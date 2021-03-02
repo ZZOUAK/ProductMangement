@@ -6,7 +6,8 @@
   <div class="notification">
    <h4> <div class="row justify-content-center">List of products.</div></h4>
     <ul>
-        @foreach ($products as $product)
+        {{-- laravel blade code --}}
+        {{-- @foreach ($products as $product)
             <li>
                 <div class="card">
 
@@ -52,10 +53,16 @@
                   </div>
                 </div>
             </li>
-        @endforeach
+        @endforeach --}}
 
+        {{-- VueJS style code --}}
+
+            <app :server_data="{{$products}}" ></app>
     </ul>
   </div>
+
 </div>
 
 @endsection
+
+

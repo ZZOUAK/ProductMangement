@@ -126,7 +126,7 @@ class ProductController extends Controller
 
 
         $validatedData=request()->validate([
-            'name' => 'required|string|unique:products,name',
+
             'description' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'required',
@@ -141,7 +141,7 @@ class ProductController extends Controller
         $categoryId=$category[0]->id;
 
         $product->category_id=$categoryId;
-        $product->name=strip_tags(request('name'));
+
         $product->description=strip_tags(request('description'));
         $product->price=strip_tags(request('price'));
 

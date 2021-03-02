@@ -43,7 +43,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" v-model="message" type="text" class="form-control @error('name') is-invalid @enderror" name="name"   value="{{ $product->name }}" required autocomplete="name" autofocus>
+                            <input id="name" disabled v-model="message" type="text" class="form-control @error('name') is-invalid @enderror" name="name"   value="{{ $product->name }}" required autocomplete="name" autofocus>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -82,6 +82,7 @@
                         <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('image') }}</label>
 
                         <div class="col-md-6">
+                            <img width="48px" height="48px" src="{{asset('storage/'.$product->image.'')}}" alt="Product image">
                             <input id="image" type="file"  name="image"   required  autofocus>
 
                             @error('image')

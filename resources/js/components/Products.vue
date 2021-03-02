@@ -1,5 +1,5 @@
 <template>
-    <div class="Products">
+    <div>
     <!-- <table>
     <thead>
       <tr>
@@ -21,6 +21,20 @@
       </tr>
     </tbody>
   </table> -->
+        <div v-for="(product,index) in products" :key="index">
+              <product
+              :product="product"
+              class="product"
+              />
+        </div>
 
     </div>
 </template>
+<script>
+import Product from './Product'
+export default {
+    props : ['products'],
+
+    components : {Product}
+}
+</script>
